@@ -1,0 +1,34 @@
+metricbeat.modules:
+- module: docker
+  metricsets: ["container", "cpu", "diskio", "event", "healthcheck", "image", "info", "memory", "network"]
+  hosts: ["unix:///var/run/docker.sock"]
+  period: 10s
+
+- module: elasticsearch
+  metricsets: ["node", "node_stats", "cluster_stats", "index"]
+  period: 10s
+  hosts: ["https://po-s-uea.es.sa-east-1.aws.found.io:"]  
+  protocol: "https"
+  username: elastic
+  password: GZWa6qUGILtTQ51q24wUlkbH
+
+- module: rabbitmq
+  # connection metric will be available in a future metricbeat release. not working with latest tested version, 6.2.3
+  metricsets: ["node", "queue"] #, "connection"]
+  period: 10s
+  hosts: ["https://po-s-uea.es.sa-east-1.aws.found.io:"]  
+  protocol: "https"
+  username: elastic
+  password: GZWa6qUGILtTQ51q24wUlkbH
+
+
+output.elasticsearch:
+  hosts: ["https://po-s-uea.es.sa-east-1.aws.found.io:"]
+  protocol: "https"
+  username: elastic
+  password: GZWa6qUGILtTQ51q24wUlkbH
+
+setup.kibana:
+  host: "https://po-s-uea.kb.sa-east-1.aws.found.io:9243"
+
+setup.dashboards.enabled: true
