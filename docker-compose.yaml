@@ -118,7 +118,7 @@ services:
       - uea-network
 
   app_notification:
-    image: manscalh/app_notification:latest
+    image: manscalh/app-notification:latest
     container_name: app-notification
     environment:
     - RMQ_USER=admin
@@ -127,6 +127,19 @@ services:
     - RMQ_PROTOCOLO=amqp
     ports:
       - 3002:3002
+    networks: 
+      - uea-network
+
+  app_reports:
+    image: manscalh/app-reports:latest
+    container_name: app-reports
+    environment:
+    - RMQ_USER=admin
+    - RMQ_PASSWORD=admin
+    - RMQ_URL=rabbitmq:5672/radiofrequencia
+    - RMQ_PROTOCOLO=amqp
+    ports:
+      - 3003:3003
     networks: 
       - uea-network
       
