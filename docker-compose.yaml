@@ -1,5 +1,10 @@
 version: "3"
 
+networks: 
+  uea-network:
+    driver:
+      bridge
+
 services:  
 
   # elasticsearch:
@@ -144,10 +149,7 @@ services:
       - uea-network
       
   
-networks: 
-  uea-network:
-    external: true
 
     
 
-# docker network create observability
+# docker network create uea-network
