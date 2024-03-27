@@ -1,5 +1,10 @@
 version: "3"
 
+networks: 
+  uea-network:
+    driver: bridge
+    
+
 services:  
 
   # elasticsearch:
@@ -145,9 +150,9 @@ services:
       - uea-network
       
   
-networks: 
-  uea-network:
-    external: true
+# networks: 
+#   uea-network:
+#     external: true
 
     
 
