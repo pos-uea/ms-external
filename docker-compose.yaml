@@ -1,10 +1,5 @@
 version: "3"
 
-networks: 
-  uea-network:
-    driver:
-      bridge
-
 services:  
 
   # elasticsearch:
@@ -105,6 +100,7 @@ services:
     - RMQ_PROTOCOLO=amqp
     ports:
       - "3000:3000"
+      - 443:443
     networks: 
       - uea-network
 
@@ -149,6 +145,9 @@ services:
       - uea-network
       
   
+networks: 
+  uea-network:
+    external: true
 
     
 
