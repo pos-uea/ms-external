@@ -148,6 +148,16 @@ services:
       - 3003:3003
     networks: 
       - uea-network
+
+  app_frontend:
+    image: manscalh/frontend-app:latest
+    container_name: app_frontend
+    environment:
+    - VITE_BASE_URL=http://localhost:3000/api/
+    ports:
+      - 8081:8081
+    networks: 
+      - uea-network
       
   
 # networks: 
