@@ -105,7 +105,6 @@ services:
     - RMQ_PROTOCOLO=amqp
     ports:
       - "3000:3000"
-      - 443:443
     networks: 
       - uea-network
 
